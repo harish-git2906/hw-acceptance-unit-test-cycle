@@ -1,4 +1,3 @@
-
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
     Movie.create movie
@@ -23,3 +22,8 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+
+
+Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |movie, director|
+  Movie.find_by_title(movie).director == director
+end 

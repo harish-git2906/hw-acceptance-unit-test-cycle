@@ -1,15 +1,4 @@
--#  This file is app/views/movies/index.html.haml
-%h2 All Movies
-
-= form_tag movies_path, :method => :get, :id => 'ratings_form' do
-  = hidden_field_tag "title_sort", true if @title_header
-  = hidden_field_tag ":release_date_sort", true if @date_header
-  Include: 
-  - @all_ratings.each do |rating|
-    = rating
-    = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating), :id => "ratings_#{rating}"
-  = submit_tag 'Refresh', :id => 'ratings_submit'
-
+-#  This file is app/views/movies/find_with_same_director.html.haml
 %table.table-striped.col-md-10#movies
   %thead
     %tr
@@ -26,5 +15,3 @@
         %td= movie.release_date
         %td= link_to "More about #{movie.title}", movie_path(movie)
         %td= movie.director
-
-= link_to 'Add new movie', new_movie_path
